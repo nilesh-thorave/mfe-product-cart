@@ -1,9 +1,10 @@
-import React from "react";
-
+import CartsDashboard from "./pages/CartsDashboard";
+import Order from "./pages/Order";
 const App = () => {
   return (
     <div>
-      <h1 className="h1">React Webpack 5 boilerplate</h1>
+      {/* <CartsDashboard /> */}
+      <Order />
     </div>
   );
 };
