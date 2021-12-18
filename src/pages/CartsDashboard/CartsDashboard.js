@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { List, Button, Typography, Row, Col } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 
@@ -24,14 +25,17 @@ function CartsDashboard() {
       footer={
         <Row justify="space-between" align="start">
           <Col span={8}>
-            <Button
-              type="primary"
-              shape="round"
-              icon={<CheckOutlined />}
-              size="large"
-            >
-              Buy Now
-            </Button>
+            <Link to="/order">
+              <Button
+                type="primary"
+                shape="round"
+                icon={<CheckOutlined />}
+                size="large"
+                onClick={() => {}}
+              >
+                Buy Now
+              </Button>
+            </Link>
           </Col>
           <Col span={4}>
             <Title level={2}>Total: {totalCost}$</Title>
