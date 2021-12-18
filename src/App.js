@@ -1,22 +1,29 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CartsDashboard from "./pages/CartsDashboard";
-import Order from "./pages/Order";
+
+import PageLoader from "./components/PageLoader";
+
+const CartsDashboardLazy = lazy(() => import("./pages/CartsDashboard"));
+const OrderLazy = lazy(() => import("./pages/Order"));
+
 const App = () => {
   return (
     <BrowserRouter>
       <section>
-        <Routes>
-          <Route path="my-cart" element={<CartsDashboard />} />
-          <Route path="order" element={<Order />} />
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>There's nothing here!</p>
-              </main>
-            }
-          />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="my-cart" element={<CartsDashboardLazy />} />
+            <Route path="order" element={<OrderLazy />} />
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
+          </Routes>
+        </Suspense>
       </section>
     </BrowserRouter>
   );
