@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Descriptions, Button, Space } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 
 function Order() {
+  const navigate = useNavigate();
   return (
     <Space direction="vertical" size="large">
       <Descriptions
@@ -28,7 +30,12 @@ function Order() {
           No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
         </Descriptions.Item>
       </Descriptions>
-      <Button type="primary" icon={<CheckOutlined />} size="large">
+      <Button
+        type="primary"
+        icon={<CheckOutlined />}
+        size="large"
+        onClick={() => navigate("/home")}
+      >
         Order
       </Button>
     </Space>
